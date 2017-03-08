@@ -1,0 +1,153 @@
+connectDB(callback)
+  Connects a client to the database
+  callback -> Optional Callback for when database
+              is connected
+
+getCoursesTaken(email, callback)
+  Gets the courses that the student corresponding
+  to "email" has taken
+  email    ->  Email of student to check courses
+  callback ->  Optional callback with the results and erros 
+               of the query
+
+getCourseOfficeHours(courseName, callback)
+  Gets the Office Hours of the course with the corresponding
+  name
+  courseName ->  Name of course to check
+  callback   ->  Optional Callback with the results and erros
+                 of the query
+
+getStaffOfficeHours(staffEmail, callback)
+  Gets the Office Hours of the staff with the corresponding
+  email
+  staffEmail ->  Email of the staff member to check
+  callback   ->  Optional callback with the results and errors 
+                 of the query
+
+getCurrentlyEnrolled(studentEmail, callback)
+  Gets the currently enrolled courses of the student
+  with the corresponding email
+  studentEmail ->  Email of the student to check
+  callback     ->  Optional callback with the results and errors
+                   of the query
+
+getCourseTimes(studentEmail, callback)
+  Gets the times of all of the currently enrolled 
+  courses of the student corresponding to studentEmail
+  studentEmail ->  email of the student to check
+  callback     ->  Optional callback with the results and errors 
+                   of the query
+
+getStudentsInCourse(courseName, callback)
+  Gets the First and Last names of the students 
+  currently enrolled in a given course
+  courseName ->  Name of the course to get students from
+  callback   ->  Optional callback with the results and errors 
+                 of the query
+
+login(email, password, callback)
+  Determines whether or not the login information provided
+  was correct
+  email    ->  Email to attempt to login with
+  password ->  Password to attempt to login with
+  callback ->  Optional callback with boolean of whether or
+              not login was succesful
+
+studentOrProf(email, callback)
+  Determines whether an email maps to that of a 
+  Student or a Professor
+  email    ->  Email to check
+  callback ->  Optional callback with the results and errors
+              of the query
+
+storeStudent(student, callback)
+  Stores the relevant data for a student into 
+  the database. Highly recommended to hash passwords
+  before storing
+  student -> JSON with all relevant information for a student
+
+  Current Structure:
+    student.Email, student.Major, student.FirstName,
+    student.LastName, student.Year, student.StudentRank,
+    student.Password <- To Be Hashed
+
+  callback -> Optional callback with the database response
+  and error
+
+storeProfessor(prof, callback)
+  Stores the relevant data for a professor into the 
+  database. Highly recommended to hash passwords before
+  storing.
+  prof -> JSON with all relevant information for a professor
+
+  Current Structure:
+    prof.Email, prof.FirstName, prof.LastName,
+    prof.Office, prof.Password <- To Be Hashed
+
+  callback -> Optional callback with the database response
+  and error
+
+storeSecurityQuestion(person, callback)
+  Stores the security question and answer for a
+  person in the database. Recommended to hash answer.
+  person -> JSON with the question, answer, and person
+  to store the information for
+
+  Current Structure:
+    person.Email, person.Question,
+    person.Answer <- To Be Hashed
+
+  callback -> Optional callback with the database response
+  and error
+
+storeAllOfficeHours(officeHours, callback)
+  Stores all the office hours in an array
+  of officeHour JSONs
+  officeHours -> Array of JSONs with the relevant
+  information for an Office Hour
+
+  Current Structure:
+    officeHour.Day, officeHour.Time, 
+    officeHour.Email, officeHour.Room,
+    officeHour.Course
+
+  callback -> Optional callback with the database response
+  and error after all officeHours stored
+
+storeCoursesTaken(courses, callback)
+  Stores all of the courses that a student has taken
+  that are in an array of courseTaken JSONs
+  courses -> Array of JSONs with the relevant
+  information for the course taken
+
+  Current Structure:
+    courseTaken.Name, courseTaken.Num,
+    courseTaken.Email
+
+  callback -> Optional callback with the database response
+  and error after all courses are stored
+
+storeAllEnrolled(enrolled, callback)
+  Stores all of the courses that a student is 
+  enrolled in that are in an array of Enrolled JSONs
+  enrolled -> Array of JSONs with the relevant
+  information for the enrolled courses
+
+  Current Structure:
+    course.Name, course.Email, 
+    course.Num
+
+  callback -> Optional callback with the database response
+  and error after all courses are stored
+
+storeAllCourseTimes(times, callback)
+  Stores all of the times of courses that
+  a student is enrolled in in an array of 
+  Time JSONs
+
+  Current Structure:
+    time.Name, time.Email,
+    time.Day, time.Time
+
+  callback -> Optional callback with the database response
+  and error after all times are stored
