@@ -6,7 +6,7 @@ import { RequestOptions }  from  '@angular/http';
 import  'rxjs/add/operator/toPromise';
 
 export class StoreService {
-  storeStudent = '/storeStudent';
+  storeStud = '/storeStudent';
   storeProf    = '/storeProfessor';
   storeSec     = '/storeSecurityQuestion';
   storeOH      = '/storeOfficeHours';
@@ -14,7 +14,9 @@ export class StoreService {
   storeE       = '/storeEnrolled';
   storeCTimes  = '/storeCourseTimes'
 
-  private makePost(url: String, json: Object, 
+  constructor(private http: Http) {  }
+
+  private makePost(url: string, json: Object, 
                    callback: Function): Promise<Object>{
     let headers = new Headers({"Content-Type": "application/json"});
     let options = new RequestOptions({headers: headers});
@@ -33,35 +35,35 @@ export class StoreService {
 
   private logCallback(response: Object): void{
     console.log("Inside Callback")
-    console.log(response.statusCode)
+    console.log(response)
   }
 
   storeStudent(json: Object): Promise<Object>{
-    return makePost(storeStudent, json, logCallback);
+    return this.makePost(this.storeStud, json, this.logCallback);
   }
 
   storeProfessor(json: Object): Promise<Object>{
-    return makePost(storeProf, json, logCallback);
+    return this.makePost(this.storeProf, json, this.logCallback);
   }
 
   storeSecurityQuestion(json: Object): Promise<Object>{
-    return makePost(storeSec, json, logCallback);
+    return this.makePost(this.storeSec, json, this.logCallback);
   }
 
   storeOfficeHours(json: Object): Promise<Object>{
-    return makePost(storeOH, json, logCallback);
+    return this.makePost(this.storeOH, json, this.logCallback);
   }
 
   storeCoursesTaken(json: Object): Promise<Object>{
-    return makePost(storeCTaken, json, logCallback);
+    return this.makePost(this.storeCTaken, json, this.logCallback);
   }
 
   storeEnrolled(json: Object): Promise<Object>{
-    return makePost(storeE, json, logCallback);
+    return this.makePost(this.storeE, json, this.logCallback);
   }
 
   storeCourseTimes(json: Object): Promise<Object>{
-    return makePost(storeCTimes, json, logCallback);
+    return this.makePost(this.storeCTimes, json, this.logCallback);
   }
 
 }
