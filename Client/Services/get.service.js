@@ -43,9 +43,21 @@ var GetService = (function () {
         var body = response.json();
         console.log(body);
     };
+    GetService.prototype.courseTimeCallback = function (response) {
+        console.log("Inside CT Callback");
+        var body = response.json();
+        console.log(body);
+        return body;
+    };
+    GetService.prototype.courseCallback = function (response) {
+        console.log("Inside Course Callback");
+        var body = response.json();
+        console.log(body);
+        return body;
+    };
     GetService.prototype.getCoursesTaken = function (Email) {
         var json = { "Email": Email };
-        return this.makePost(this.coursesTaken, json, this.logCallback);
+        return this.makePost(this.coursesTaken, json, this.courseCallback);
     };
     GetService.prototype.getCourseOfficeHours = function (Name) {
         var json = { "Name": Name };
@@ -57,11 +69,11 @@ var GetService = (function () {
     };
     GetService.prototype.getCurrentlyEnrolled = function (Email) {
         var json = { "Email": Email };
-        return this.makePost(this.enrolled, json, this.logCallback);
+        return this.makePost(this.enrolled, json, this.courseCallback);
     };
     GetService.prototype.getCourseTimes = function (Email) {
         var json = { "Email": Email };
-        return this.makePost(this.times, json, this.logCallback);
+        return this.makePost(this.times, json, this.courseTimeCallback);
     };
     GetService.prototype.getStudentsInCourse = function (Name) {
         var json = { "Name": Name };
