@@ -6,13 +6,15 @@ import { RequestOptions }  from  '@angular/http';
 import  'rxjs/add/operator/toPromise';
 
 export class StoreService {
-  storeStud = '/storeStudent';
+  storeStud    = '/storeStudent';
   storeProf    = '/storeProfessor';
   storeSec     = '/storeSecurityQuestion';
   storeOH      = '/storeOfficeHours';
   storeCTaken  = '/storeCoursesTaken';
   storeE       = '/storeEnrolled';
   storeCTimes  = '/storeCourseTimes'
+
+  buttonClass: string;
 
   constructor(private http: Http) {  }
 

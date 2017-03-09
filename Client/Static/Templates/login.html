@@ -1,0 +1,7 @@
+<div class="centered">
+  <form (submit)="login()" id="login">
+    <input (keyup)="emailEvent($event)" type="text" placeholder="Email" class="login">
+    <input (keyup)="pwdEvent($event)" type="password" placeholder="Password" class="login">
+    <button class="btn {{this.buttonClass}}">Login</button>
+  </form>
+</div>

@@ -10,8 +10,8 @@
     },
     // map tells the System loader where to look for things
     map: {
-      // our app is within the app folder
-      app: 'app',
+      // our app is within the Client/Modules folder
+      app: 'Client',
 
       "angular2-masonry": "node_modules/angular2-masonry",
       "masonry-layout": 'node_modules/masonry-layout/dist/masonry.pkgd.min.js',
@@ -33,7 +33,7 @@
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
       app: {
-        main: './main.js',
+        main: './Components/main.js',
         defaultExtension: 'js'
       },
       rxjs: {

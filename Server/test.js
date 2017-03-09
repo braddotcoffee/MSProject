@@ -173,8 +173,8 @@ json = {"Times":times}
 testPost('/storeCourseTimes', JSON.stringify(json), testStores);
 
 json = {"Email":"test2@email.com", "Password":"Dank"}
-testPost('/login', JSON.stringify(json), testLogin);
+testPost('/loginCred', JSON.stringify(json), testLogin);
 
 json = {"Email":"testProf@wpi.edu", 
   "Password":"What a password this is"}
-testPost('/login', JSON.stringify(json), testLogin);
+testPost('/loginCred', JSON.stringify(json), testLogin);

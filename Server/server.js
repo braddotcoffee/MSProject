@@ -62,6 +62,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(express.static(path.join(__dirname, "../Client/Static")));
+app.use("/Client", express.static(path.join(__dirname, "../Client")));
 app.use("/node_modules", express.static(path.join(__dirname, "../node_modules")))
 
 // {"Email":<Email>} 
@@ -101,7 +102,7 @@ app.post('/studentsInCourse', function(req,res,next){
   db.getStudentsInCourse(courseName, sendResultRows.bind(null, res));
 });
 // {"Email":<Email>, "Password":<Password>}
-app.post('/login', function(req, res, next){
+app.post('/loginCred', function(req, res, next){
   var email = req.body.Email;
   var password = req.body.Password;
 
@@ -150,27 +151,9 @@ app.post('/storeCourseTimes', function(req,res,next){
   db.storeAllCourseTimes(times, sendStatus.bind(null, res));
 })
 
-
-
-// app.post("/addPost", function(req, res, next){
-//   var reqBody = req.body;
-//   if(reqBody.UID === null)
-//     db.genID(reqBody.PID, reqBody.body, res);
-//   else{
-//     db.insertDB(reqBody.UID, reqBody.PID, reqBody.body);
-//     res.set({
-//       "Content-Type": "text/plain",
-//       "X-Content-Type-Options": "nosniff"
-//     });
-//     res.end(reqBody.UID, 'utf-8');
-//   }
-// });
-
-// res.set({
-//   "Content-Type": "application/json",
-//   "X-Content-Type": "nosniff"
-// });
-// res.end(JSON.stringify(result.rows));
+app.get("*", function(req,res){
+  res.sendFile(path.join(__dirname, '../Client/Static/index.html'));
+})
 
 app.listen(port, function(){
   console.log("App is listening on port " + port);

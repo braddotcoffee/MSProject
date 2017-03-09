@@ -1,0 +1,31 @@
+body {
+  font: sans-serif;
+  font-size: 150%;
+}
+
+app {
+  display: block;
+}
+
+.navbar {
+  width: 70%;
+  margin: 1% auto;
+}
+
+.login {
+  display: block;
+  margin: 1% auto;
+  padding: 0.4%;
+  border-style: solid;
+  border-radius: 5px;
+}
+
+.centered {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  margin: 5% auto;
+  text-align: center;
+}

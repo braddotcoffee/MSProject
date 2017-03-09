@@ -9,26 +9,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var http_1 = require('@angular/http');
 var http_2 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
 var GetService = (function () {
-    function GetService(http) {
+    function GetService(http, router) {
         this.http = http;
+        this.router = router;
         this.coursesTaken = '/coursesTaken';
         this.cOfficeHours = '/courseOfficeHours';
         this.sOfficeHours = '/staffOfficeHours';
         this.enrolled = '/currentlyEnrolled';
         this.times = '/courseTimes';
         this.sInCourse = '/studentsInCourse';
-        this.uLogin = '/login';
     }
     GetService.prototype.makePost = function (url, json, callback) {
+        var _this = this;
         var headers = new http_1.Headers({ "Content-Type": "application/json" });
         var options = new http_2.RequestOptions({ headers: headers });
         return this.http.post(url, json, options)
             .toPromise()
-            .then(function (response) { return callback(response); })
+            .then(function (response) { return callback(response, _this); })
             .catch(this.handleError);
     };
     GetService.prototype.handleError = function (error) {
@@ -38,7 +40,8 @@ var GetService = (function () {
     };
     GetService.prototype.logCallback = function (response) {
         console.log("Inside Callback");
-        console.log(response);
+        var body = response.json();
+        console.log(body);
     };
     GetService.prototype.getCoursesTaken = function (Email) {
         var json = { "Email": Email };
@@ -64,13 +67,9 @@ var GetService = (function () {
         var json = { "Name": Name };
         return this.makePost(this.sInCourse, json, this.logCallback);
     };
-    GetService.prototype.login = function (Email, Password) {
-        var json = { "Email": Email, "Password": Password };
-        return this.makePost(this.uLogin, json, this.logCallback);
-    };
     GetService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [http_1.Http, router_1.Router])
     ], GetService);
     return GetService;
 }());
