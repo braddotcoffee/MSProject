@@ -139,7 +139,7 @@ exports.getCoursesTaken = function(email, callback){
 exports.getCourseOfficeHours = function(courseName, callback){
   client.query(
     {
-      text: "SELECT * FROM GetCourseOfficeHours($1);",
+      text: "SELECT Day, Time, Course as Name FROM GetCourseOfficeHours($1);",
       values: [courseName]
     }, function(err, result){
       resolveQuery(err, result, callback);
@@ -149,7 +149,7 @@ exports.getCourseOfficeHours = function(courseName, callback){
 exports.getStaffOfficeHours = function(staffEmail, callback){
   client.query(
     {
-      text: "SELECT * FROM GetStaffOfficeHours($1);",
+      text: "SELECT Day, Time, Course as Name FROM GetStaffOfficeHours($1);",
       values: [staffEmail]
     }, function(err, result){
       resolveQuery(err, result, callback);
@@ -180,6 +180,24 @@ exports.getStudentsInCourse = function(courseName, callback){
   client.query({
     text: "SELECT FirstName, LastName FROM GetStudentsInCourse($1);",
     values: [courseName]
+  }, function(err, result){
+    resolveQuery(err, result, callback);
+  })
+}
+
+exports.getStudent = function(studentEmail, callback){
+  client.query({
+    text: "SELECT * FROM GetStudent($1);",
+    values: [studentEmail]
+  }, function(err, result){
+    resolveQuery(err, result, callback);
+  })
+}
+
+exports.getProfessor = function(profEmail, callback){
+  client.query({
+    text: "SELECT * FROM GetProfessor($1);",
+    values: [profEmail]
   }, function(err, result){
     resolveQuery(err, result, callback);
   })

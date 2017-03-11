@@ -1,0 +1,8 @@
+<div class="cTime" *ngFor="let d of this.days">
+  <div class="day" *ngIf="this.schedule.get(d)">
+    {{d}} 
+    <div class="time" *ngFor="let t of this.schedule.get(d)">
+      {{t.name}} {{t.time}}
+    </div>
+  </div>
+</div>

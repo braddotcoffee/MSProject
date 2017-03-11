@@ -17,6 +17,9 @@ var app_component_1 = require('../Components/app.component');
 var home_component_1 = require('../Components/home.component');
 var login_component_1 = require('../Components/login.component');
 var dashboard_component_1 = require('../Components/dashboard.component');
+var person_component_1 = require('../Components/person.component');
+var schedule_component_1 = require('../Components/schedule.component');
+var profile_component_1 = require('../Components/profile.component');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -32,6 +35,9 @@ var AppModule = (function () {
                 home_component_1.HomeComponent,
                 login_component_1.LoginComponent,
                 dashboard_component_1.DashboardComponent,
+                person_component_1.PersonComponent,
+                schedule_component_1.ScheduleComponent,
+                profile_component_1.ProfileComponent,
                 app_component_1.AppComponent
             ],
             bootstrap: [

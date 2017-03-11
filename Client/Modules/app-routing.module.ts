@@ -4,6 +4,7 @@ import { RouterModule, Routes }  from  '@angular/router'
 import { HomeComponent        }  from  '../Components/home.component';
 import { LoginComponent       }  from  '../Components/login.component';
 import { DashboardComponent   }  from  '../Components/dashboard.component';
+import { ProfileComponent     }  from  '../Components/profile.component';
 
 const routes = [
   {
@@ -19,6 +20,11 @@ const routes = [
   {
     path: 'dashboard',
     component: DashboardComponent
+  },
+
+  {
+    path: 'profile/:email',
+    component: ProfileComponent
   },
 
   {

@@ -1,0 +1,73 @@
+<div class="centered">
+  <div class="name">
+    {{this.person.firstName}} {{this.person.lastName}} 
+  </div>
+  <div class="major">
+    {{this.person.major}}
+  </div>
+  <div class="office">
+    {{this.person.office}}
+  </div>
+  <div class="email">
+    <a href="mailto:{{this.email}}?Subject=Hey%20there" target="_top">
+      {{this.email}}
+    </a>
+  </div>
+  <div class="panel-group">
+    <div class="panel panel-default" *ngIf="person.cTaken">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#cTaken">
+            Courses Taken
+          </a>
+        </h4>
+      </div>
+      <div id="cTaken" class="panel-collapse collapse">
+        <div class="panel-body">
+          <div class='cTaken' *ngFor="let ct of person.cTaken">
+            {{ct.num}} {{ct.name}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default" *ngIf="person.enrolled">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#cEnrolled">
+            Currently Enrolled
+          </a>
+        </h4>
+      </div>
+    </div>
+    <div id="cEnrolled" class="panel-collapse collapse">
+      <div class='panel-body'>
+        <div class='cEnrolled' *ngFor="let e of person.enrolled">
+          {{e.num}} {{e.name}}
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default" *ngIf="person.ct">
+      <div class="panel-heading">
+        <div class="panel-title">
+          <a data-toggle="collapse" href="#cTimes">
+            Course Times
+          </a>
+        </div>
+      </div>
+      <div id="cTimes" class="panel-collapse collapse">
+        <div class="panel-body">
+          <div *ngIf="person.ct">
+            <schedule [times]="person.ct"></schedule>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default" *ngIf="person.oh">
+      <div class="panel-heading">
+      <h5> Office Hours </h5>
+      <schedule [times]="person.oh"></schedule>
+    </div>
+  </div>

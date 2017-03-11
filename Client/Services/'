@@ -70,7 +70,7 @@ export class GetService {
 
   private responseCallback(response: Response): Response {
     console.log("Inside Response Callback");
-    console.log(response.json());
+    console.log(response);
     return response;
   }
 
@@ -86,10 +86,10 @@ export class GetService {
     return this.makePost(this.cOfficeHours, json, this.logCallback);
   }
 
-  getStaffOfficeHours(Email: string): Promise<CourseTime[]>{
+  getStaffOfficeHours(Email: string): Promise<string>{
     var json = {"Email": Email};
 
-    return this.makePost(this.sOfficeHours, json, this.courseTimeCallback);
+    return this.makePost(this.sOfficeHours, json, this.logCallback);
   }
 
   getCurrentlyEnrolled(Email: string): Promise<Course[]>{
@@ -114,12 +114,6 @@ export class GetService {
     var json = {"Email":Email};
 
     return this.makePost(this.student, json, this.responseCallback);
-  }
-
-  getProfessor(Email: string): Promise<Response> {
-    var json = {"Email": Email};
-
-    return this.makePost(this.professor, json, this.responseCallback);
   }
 
   getStudentOrProf(Email: string): Promise<Response>{

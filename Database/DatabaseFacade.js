@@ -19,5 +19,7 @@ module.exports = {
   getStudentsInCourse: pg.getStudentsInCourse,
   getStudentRank: pg.getStudentRank,
   studentOrProf: pg.studentOrProf,
+  getStudent: pg.getStudent,
+  getProfessor: pg.getProfessor,
   login: pg.login
 };

@@ -13,6 +13,7 @@ var router_1 = require('@angular/router');
 var home_component_1 = require('../Components/home.component');
 var login_component_1 = require('../Components/login.component');
 var dashboard_component_1 = require('../Components/dashboard.component');
+var profile_component_1 = require('../Components/profile.component');
 var routes = [
     {
         path: 'home',
@@ -25,6 +26,10 @@ var routes = [
     {
         path: 'dashboard',
         component: dashboard_component_1.DashboardComponent
+    },
+    {
+        path: 'profile/:email',
+        component: profile_component_1.ProfileComponent
     },
     {
         path: '',

@@ -115,3 +115,18 @@ BEGIN
   END IF;
 END;
 $$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION GetStudent(sEmail IN VARCHAR(30))
+RETURNS SETOF StudentPublic AS $$
+Begin
+  RETURN QUERY (SELECT * FROM StudentPublic WHERE Email = sEmail);
+End;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION GetProfessor(sEmail IN VARCHAR(30))
+RETURNS SETOF ProfessorPublic AS $$
+Begin
+  RETURN QUERY (SELECT * FROM ProfessorPublic WHERE Email = sEmail);
+END;
+$$ LANGUAGE plpgsql;
+

@@ -3,11 +3,97 @@ body {
   font-size: 150%;
 }
 
+a {
+  outline: 0;
+}
+
+.carousel {
+  width: 50%;
+  margin: 0 auto;
+  border: 0px !important;
+}
+
+.carousel-inner > .item > img {
+  margin: 0 auto;
+}
+
+.carousel-control {
+  opacity: 0.2;
+}
+
+.carousel-control:hover{
+  opacity: 0.5;
+}
+
+.carousel-caption {
+  color: rgba(0,0,0,0.3);
+  text-shadow: none;
+}
+
 app {
   display: block;
 }
 
+dashboard , profile{
+  display: block;
+  width: 70%;
+}
+
+dashboard , person, profile{
+  display: block;
+  margin: 0 auto;
+}
+
+div.panel.panel-default {
+  margin: 1% auto;
+  color: #333;
+}
+
+div.panel-default > .panel-heading {
+  background-color: #f8f8f8;
+  border-color: #e7e7e7;
+}
+
+div.panel-heading {
+  border-bottom: none;
+}
+
+div.panel-body {
+  padding-left: 10%;
+}
+
+.name {
+  display: block;
+  text-align: right;
+  font-size: 300%;
+}
+
+.email, .major, .office {
+  display: block;
+  font-size: 200%;
+  text-align: right;
+}
+
+h5 {
+  font-size: 200% !important;
+  text-align: center;
+}
+
+.cTaken, .cEnrolled, .cTime {
+  font-size: 175%;
+  text-align: left;
+}
+
+.time {
+  padding-left: 5%;
+}
+
+nav {
+  display: block;
+}
+
 .navbar {
+  display: block;
   width: 70%;
   margin: 1% auto;
 }
@@ -21,11 +107,8 @@ app {
 }
 
 .centered {
-  position: relative;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  margin: 5% auto;
+  display: block;
+  overflow: auto;
+  margin: 2% auto;
   text-align: center;
 }

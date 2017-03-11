@@ -23,6 +23,9 @@ var GetService = (function () {
         this.enrolled = '/currentlyEnrolled';
         this.times = '/courseTimes';
         this.sInCourse = '/studentsInCourse';
+        this.student = '/getStudent';
+        this.professor = '/getProfessor';
+        this.sOrP = '/studentOrProf';
     }
     GetService.prototype.makePost = function (url, json, callback) {
         var _this = this;
@@ -55,6 +58,17 @@ var GetService = (function () {
         console.log(body);
         return body;
     };
+    GetService.prototype.personCallback = function (response) {
+        console.log("Inside Person Callback");
+        var body = response.json();
+        console.log(body);
+        return body;
+    };
+    GetService.prototype.responseCallback = function (response) {
+        console.log("Inside Response Callback");
+        console.log(response.json());
+        return response;
+    };
     GetService.prototype.getCoursesTaken = function (Email) {
         var json = { "Email": Email };
         return this.makePost(this.coursesTaken, json, this.courseCallback);
@@ -65,7 +79,7 @@ var GetService = (function () {
     };
     GetService.prototype.getStaffOfficeHours = function (Email) {
         var json = { "Email": Email };
-        return this.makePost(this.sOfficeHours, json, this.logCallback);
+        return this.makePost(this.sOfficeHours, json, this.courseTimeCallback);
     };
     GetService.prototype.getCurrentlyEnrolled = function (Email) {
         var json = { "Email": Email };
@@ -77,7 +91,19 @@ var GetService = (function () {
     };
     GetService.prototype.getStudentsInCourse = function (Name) {
         var json = { "Name": Name };
-        return this.makePost(this.sInCourse, json, this.logCallback);
+        return this.makePost(this.student, json, this.logCallback);
+    };
+    GetService.prototype.getStudent = function (Email) {
+        var json = { "Email": Email };
+        return this.makePost(this.student, json, this.responseCallback);
+    };
+    GetService.prototype.getProfessor = function (Email) {
+        var json = { "Email": Email };
+        return this.makePost(this.professor, json, this.responseCallback);
+    };
+    GetService.prototype.getStudentOrProf = function (Email) {
+        var json = { "Email": Email };
+        return this.makePost(this.sOrP, json, this.responseCallback);
     };
     GetService = __decorate([
         core_1.Injectable(), 

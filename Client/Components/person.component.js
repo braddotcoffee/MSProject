@@ -10,21 +10,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var get_service_1 = require('../Services/get.service');
-var DashboardComponent = (function () {
-    function DashboardComponent(getService) {
+var Person_1 = require('./Person');
+var PersonComponent = (function () {
+    function PersonComponent(getService) {
         this.getService = getService;
-        this.email = JSON.parse(sessionStorage.getItem("userInfo")).Email;
     }
-    DashboardComponent.prototype.ngOnInit = function () { };
-    DashboardComponent = __decorate([
+    PersonComponent.prototype.ngOnInit = function () {
+        console.log(this.rank);
+        this.person = new Person_1.Person(this.getService, this.email, this.rank);
+    };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], PersonComponent.prototype, "email", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Number)
+    ], PersonComponent.prototype, "rank", void 0);
+    PersonComponent = __decorate([
         core_1.Component({
-            selector: 'dashboard',
+            selector: 'person',
             providers: [get_service_1.GetService],
-            templateUrl: 'Templates/dashboard.html'
+            templateUrl: 'Templates/person.html'
         }), 
         __metadata('design:paramtypes', [get_service_1.GetService])
-    ], DashboardComponent);
-    return DashboardComponent;
+    ], PersonComponent);
+    return PersonComponent;
 }());
-exports.DashboardComponent = DashboardComponent;
-//# sourceMappingURL=dashboard.component.js.map
+exports.PersonComponent = PersonComponent;
+//# sourceMappingURL=person.component.js.map

@@ -27,26 +27,26 @@ db.getCourseTimes('bwbonanno@wpi.edu', function(err, result){
 })
 
 student = {
-  "Email": "test2@email.com",
-  "Major": null,
-  "FirstName": "Test",
-  "LastName": "Testerson",
+  "Email": "testRank0@email.com",
+  "Major": 'RBE',
+  "FirstName": "John",
+  "LastName": "Doe",
   "Year": "Sophomore",
-  "StudentRank": "1",
+  "StudentRank": "0",
   "Password": "Dank"
 };
 
-//db.storeStudent(student);
+db.storeStudent(student);
 
 prof = {
-  "Email" : "testProf@wpi.edu",
-  "FirstName": "Testy",
-  "LastName": "Testerson",
+  "Email" : "testProf@email.com",
+  "FirstName": "Professor",
+  "LastName": "McTest",
   "Office": "FL 128",
-  "Password": "What a password this is"
+  "Password": "Test123"
 };
 
-//db.storeProfessor(prof);
+// db.storeProfessor(prof);
 
 secPerson = {
   "Email":"testProf@wpi.edu",
