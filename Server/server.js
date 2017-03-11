@@ -33,11 +33,18 @@ function studentRank(res, json){
 
 function studentOrProf(res, json){
   db.studentOrProf(json.Email, function(err, result){
-    json.studentOrProf = result.rows[0].studentorprof; 
-    if(json.studentOrProf == 'Student')
-      studentRank(res, json)
-    else
-      sendJSON(res, json)
+    if(err){
+      console.log(err)
+      sendJSON(res, {"Email":""});
+    }
+    else{
+      json.studentOrProf = result.rows[0].studentorprof; 
+      if(json.studentOrProf == 'Student')
+        studentRank(res, json)
+      else
+        sendJSON(res, json)
+    }
+
   })
 }
 
@@ -101,6 +108,23 @@ app.post('/studentsInCourse', function(req,res,next){
 
   db.getStudentsInCourse(courseName, sendResultRows.bind(null, res));
 });
+// {"Email":<Email>}
+app.post('/getStudent', function(req, res, next){
+  var studentEmail = req.body.Email;
+
+  db.getStudent(studentEmail, sendResultRows.bind(null, res));
+});
+// {"Email":<Email>}
+app.post('/getProfessor', function(req, res, next){
+  var profEmail = req.body.Email;
+
+  db.getProfessor(profEmail, sendResultRows.bind(null, res));
+});
+// {"Email":<Email>}
+app.post('/studentOrProf', function(req,res,next){
+  console.log(req.body);
+  studentOrProf(res, req.body);
+})
 // {"Email":<Email>, "Password":<Password>}
 app.post('/loginCred', function(req, res, next){
   var email = req.body.Email;
