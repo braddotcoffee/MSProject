@@ -21,9 +21,14 @@ var SearchComponent = (function () {
             sorter: function (a, b) {
                 var valA = a.firstname + " " + a.lastname;
                 var valB = b.firstname + " " + b.lastname;
+                valA = valA.toLowerCase();
+                valB = valB.toLowerCase();
                 var val = $("#search").val();
+                val = val.toLowerCase();
                 var indexA = valA.indexOf(val);
                 var indexB = valB.indexOf(val);
+                console.log(indexA);
+                console.log(indexB);
                 return indexA > indexB ? 1 : indexB > indexA ? -1 : 0;
             },
             remote: {
