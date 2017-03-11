@@ -122,7 +122,6 @@ app.post('/getProfessor', function(req, res, next){
 });
 // {"Email":<Email>}
 app.post('/studentOrProf', function(req,res,next){
-  console.log(req.body);
   studentOrProf(res, req.body);
 })
 // {"Email":<Email>, "Password":<Password>}

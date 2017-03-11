@@ -13,6 +13,7 @@ export class Person {
   userType: string;
   viewerRank: number;
   rank: number;
+  image: string;
   ct: CourseTime[];
   oh: CourseTime[];
   cTaken: Course[];
@@ -64,6 +65,7 @@ export class Person {
       this.firstName = userInfo.firstname;
       this.lastName = userInfo.lastname;
       this.major = userInfo.major;
+      this.image = userInfo.image;
     })
   }
 
@@ -74,6 +76,7 @@ export class Person {
       this.firstName = userInfo.firstname;
       this.lastName = userInfo.lastname;
       this.office = userInfo.office;
+      this.image = userInfo.image;
     });
   }
 

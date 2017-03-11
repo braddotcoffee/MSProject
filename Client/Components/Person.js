@@ -42,6 +42,7 @@ var Person = (function () {
             _this.firstName = userInfo.firstname;
             _this.lastName = userInfo.lastname;
             _this.major = userInfo.major;
+            _this.image = userInfo.image;
         });
     };
     Person.prototype.getProfessor = function () {
@@ -52,6 +53,7 @@ var Person = (function () {
             _this.firstName = userInfo.firstname;
             _this.lastName = userInfo.lastname;
             _this.office = userInfo.office;
+            _this.image = userInfo.image;
         });
     };
     Person.prototype.getCourseTimes = function () {

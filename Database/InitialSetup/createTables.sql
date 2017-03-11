@@ -25,6 +25,7 @@ CREATE TABLE Student (
   Year VARCHAR(9),
   StudentRank INT NOT NULL,
   Password CHAR(60) NOT NULL,
+  Image VARCHAR(60),
   CONSTRAINT checkStudentRank check 
   (StudentRank IN (0,1,2))
 );
@@ -34,7 +35,8 @@ CREATE TABLE Professor (
   FirstName VARCHAR(20) NOT NULL,
   LastName VARCHAR(30) NOT NULL,
   Office VARCHAR(10) NOT NULL,
-  Password CHAR(60) NOT NULL
+  Password CHAR(60) NOT NULL,
+  Image VARCHAR(60)
 );
 
 CREATE TABLE SecurityQuestion (
@@ -85,12 +87,12 @@ CREATE TABLE Courses (
 
 CREATE VIEW StudentPublic AS(
   SELECT Email, Major, FirstName,
-  LastName, Year, StudentRank
+  LastName, Year, StudentRank, Image
   FROM Student
 );
 
 CREATE VIEW ProfessorPublic AS (
   SELECT Email, FirstName, 
-  LastName, Office
+  LastName, Office, Image
   FROM Professor
 );

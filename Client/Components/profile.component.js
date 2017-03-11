@@ -26,20 +26,23 @@ var ProfileComponent = (function () {
             .getStudentOrProf(params["email"]); })
             .subscribe(function (response) {
             var body = response.json();
+            var loggedIn = sessionStorage.getItem("loggedIn");
             console.log("HERE");
             console.log(body);
-            if (!body.Email)
+            if (!body.Email || !loggedIn)
                 _this.router.navigateByUrl("/dashboard");
-            _this.email = body.Email;
-            var userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
-            console.log(userInfo);
-            if (userInfo.studentOrProf == "Professor")
-                _this.rank = 3;
-            else if (userInfo.Email == _this.email)
-                _this.rank = 4;
-            else
-                _this.rank = userInfo.studentRank;
-            console.log(_this.rank);
+            else {
+                _this.email = body.Email;
+                var userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+                console.log(userInfo);
+                if (userInfo.studentOrProf == "Professor")
+                    _this.rank = 3;
+                else if (userInfo.Email == _this.email)
+                    _this.rank = 4;
+                else
+                    _this.rank = userInfo.studentRank;
+                console.log(_this.rank);
+            }
         });
     };
     ProfileComponent = __decorate([

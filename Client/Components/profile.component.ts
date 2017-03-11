@@ -29,21 +29,24 @@ export class ProfileComponent implements OnInit {
                .getStudentOrProf(params["email"]))
                .subscribe(response => {
                  let body = response.json();
+                 var loggedIn = sessionStorage.getItem("loggedIn");
                  console.log("HERE");
                  console.log(body);
-                 if(!body.Email)
+                 if(!body.Email || !loggedIn)
                    this.router.navigateByUrl("/dashboard")
-                 this.email = body.Email;
-                 let userInfo = JSON.parse(sessionStorage.getItem("userInfo"))
-                 console.log(userInfo);
-                 if(userInfo.studentOrProf == "Professor")
-                   this.rank = 3;
-                 else if(userInfo.Email == this.email)
-                   this.rank = 4;
-                 else
-                   this.rank = userInfo.studentRank;
-                 console.log(this.rank);
+                 else{
+                   this.email = body.Email;
+                   let userInfo = JSON.parse(sessionStorage.getItem("userInfo"))
+                   console.log(userInfo);
+                   if(userInfo.studentOrProf == "Professor")
+                     this.rank = 3;
+                   else if(userInfo.Email == this.email)
+                     this.rank = 4;
+                   else
+                     this.rank = userInfo.studentRank;
+                   console.log(this.rank);
 
+                 }
                });
   }
 }

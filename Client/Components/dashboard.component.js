@@ -9,11 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var get_service_1 = require('../Services/get.service');
 var DashboardComponent = (function () {
-    function DashboardComponent(getService) {
+    function DashboardComponent(getService, router) {
         this.getService = getService;
-        this.email = JSON.parse(sessionStorage.getItem("userInfo")).Email;
+        this.router = router;
+        var loggedIn = sessionStorage.getItem("loggedIn");
+        if (!loggedIn)
+            this.router.navigateByUrl('/home');
+        else
+            this.email = JSON.parse(sessionStorage.getItem("userInfo")).Email;
     }
     DashboardComponent.prototype.ngOnInit = function () { };
     DashboardComponent = __decorate([
@@ -22,7 +28,7 @@ var DashboardComponent = (function () {
             providers: [get_service_1.GetService],
             templateUrl: 'Templates/dashboard.html'
         }), 
-        __metadata('design:paramtypes', [get_service_1.GetService])
+        __metadata('design:paramtypes', [get_service_1.GetService, router_1.Router])
     ], DashboardComponent);
     return DashboardComponent;
 }());
