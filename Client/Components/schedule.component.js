@@ -42,9 +42,9 @@ var ScheduleComponent = (function () {
                     var bHour = parseInt(bTime[0]);
                     var aMin = parseInt(aTime[1].substr(0, 2));
                     var bMin = parseInt(bTime[1].substr(0, 2));
-                    if (aTime[1].substr(2) == "PM")
+                    if (aTime[1].substr(2).trim() === "PM")
                         aHour += 12;
-                    if (bTime[1].substr(2) == "PM")
+                    if (bTime[1].substr(2).trim() === "PM")
                         bHour += 12;
                     var aDate = new Date();
                     var bDate = new Date();
@@ -54,8 +54,6 @@ var ScheduleComponent = (function () {
                     bDate.setMinutes(bMin);
                     aDate.setSeconds(0);
                     bDate.setSeconds(0);
-                    console.log(aDate);
-                    console.log(bDate);
                     return aDate > bDate ? 1 : aDate < bDate ? -1 : 0;
                 });
             }

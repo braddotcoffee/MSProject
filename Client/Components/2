@@ -51,11 +51,20 @@ export class ScheduleComponent implements OnInit {
           var aMin = parseInt(aTime[1].substr(0,2));
           var bMin = parseInt(bTime[1].substr(0,2));
 
-          if(aTime[1].substr(2).trim() === "PM")
+          console.log(aTime[1].substr(2) == "PM")
+          console.log(bTime[1].substr(2) == "PM")
+
+          if("PM".equals(aTime[1].substr(2))){
             aHour += 12;
-    
-          if(bTime[1].substr(2).trim() === "PM")
+            console.log("PM Recorded for aHour")
+          }
+          if("PM".equals(bTime[1].substr(2))){
             bHour += 12;
+            console.log("PM Recorded for bHour")
+          }
+
+          console.log(aHour);
+          console.log(bHour);
 
           var aDate = new Date();
           var bDate = new Date();
