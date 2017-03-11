@@ -48,6 +48,7 @@ var LoginService = (function () {
             lc.loginFailed();
     };
     LoginService.prototype.login = function (Email, Password, lc) {
+        Email = Email.toLowerCase();
         var json = { "Email": Email, "Password": Password };
         return this.makePost(this.uLogin, json, this.loginCallback, lc);
     };

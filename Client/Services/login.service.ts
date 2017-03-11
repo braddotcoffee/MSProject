@@ -50,6 +50,7 @@ export class LoginService {
   }
 
   login(Email: string, Password: string, lc: LoginComponent): Promise<string>{
+    Email = Email.toLowerCase();
     var json = {"Email":Email, "Password":Password};
 
     return this.makePost(this.uLogin, json, this.loginCallback, lc);
