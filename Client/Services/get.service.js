@@ -42,31 +42,21 @@ var GetService = (function () {
         return Promise.reject(error.message || error);
     };
     GetService.prototype.logCallback = function (response) {
-        console.log("Inside Callback");
         var body = response.json();
-        console.log(body);
     };
     GetService.prototype.courseTimeCallback = function (response) {
-        console.log("Inside CT Callback");
         var body = response.json();
-        console.log(body);
         return body;
     };
     GetService.prototype.courseCallback = function (response) {
-        console.log("Inside Course Callback");
         var body = response.json();
-        console.log(body);
         return body;
     };
     GetService.prototype.personCallback = function (response) {
-        console.log("Inside Person Callback");
         var body = response.json();
-        console.log(body);
         return body;
     };
     GetService.prototype.responseCallback = function (response) {
-        console.log("Inside Response Callback");
-        console.log(response.json());
         return response;
     };
     GetService.prototype.getCoursesTaken = function (Email) {

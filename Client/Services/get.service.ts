@@ -42,35 +42,25 @@ export class GetService {
   }
 
   private logCallback(response: Response): void{
-    console.log("Inside Callback")
     let body = response.json();
-    console.log(body);
   }
 
   private courseTimeCallback(response: Response): CourseTime[] {
-    console.log("Inside CT Callback");
     let body = response.json() as CourseTime[];
-    console.log(body);
     return body;
   }
 
   private courseCallback(response: Response): Course[]{
-    console.log("Inside Course Callback");
     let body = response.json() as Course[];
-    console.log(body);
     return body;
   }
 
   private personCallback(response: Response): Person {
-    console.log("Inside Person Callback");
     let body = response.json() as Person;
-    console.log(body);
     return body;
   }
 
   private responseCallback(response: Response): Response {
-    console.log("Inside Response Callback");
-    console.log(response.json());
     return response;
   }
 
