@@ -1,3 +1,5 @@
 <div class="centered">
-  <person [email]="this.email" [rank]="4"></person>
+  <div *ngIf="this.email">
+    <person [email]="this.email" [rank]="4"></person>
+  </div>
 </div>

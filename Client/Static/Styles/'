@@ -11,10 +11,6 @@ a {
   float: left;
 }
 
-.icon > img {
-  width: 150px;
-}
-
 .carousel {
   width: 50%;
   margin: 0 auto;
