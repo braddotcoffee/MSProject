@@ -72,6 +72,14 @@ app.use(express.static(path.join(__dirname, "../Client/Static")));
 app.use("/Client", express.static(path.join(__dirname, "../Client")));
 app.use("/node_modules", express.static(path.join(__dirname, "../node_modules")))
 
+app.get("/search", function(req,res){
+  var query = req.query.q;
+
+  console.log(query);
+
+  db.search(query, sendResultRows.bind(null, res));
+})
+
 // {"Email":<Email>} 
 app.post('/coursesTaken', function(req, res, next){
   var email = req.body.Email;

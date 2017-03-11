@@ -24,4 +24,8 @@ export class PersonComponent implements OnInit {
     this.person = new Person(this.getService, this.email, this.rank);
   }
 
+  ngOnChanges(): void {
+    this.ngOnInit();
+  }
+
 }

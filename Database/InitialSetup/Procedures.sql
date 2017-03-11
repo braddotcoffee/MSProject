@@ -130,3 +130,12 @@ Begin
 END;
 $$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION Search(Query IN VARCHAR(50))
+RETURNS SETOF SearchView AS $$
+BEGIN
+  RETURN QUERY (SELECT * FROM SearchView
+    WHERE FirstName LIKE '%'||Query||'%' OR 
+          LastName LIKE '%'||Query||'%');
+END;
+$$ LANGUAGE plpgsql;
+

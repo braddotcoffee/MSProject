@@ -19,6 +19,9 @@ var PersonComponent = (function () {
         console.log(this.rank);
         this.person = new Person_1.Person(this.getService, this.email, this.rank);
     };
+    PersonComponent.prototype.ngOnChanges = function () {
+        this.ngOnInit();
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', String)

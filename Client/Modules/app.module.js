@@ -20,6 +20,7 @@ var dashboard_component_1 = require('../Components/dashboard.component');
 var person_component_1 = require('../Components/person.component');
 var schedule_component_1 = require('../Components/schedule.component');
 var profile_component_1 = require('../Components/profile.component');
+var search_component_1 = require('../Components/search.component');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -38,6 +39,7 @@ var AppModule = (function () {
                 person_component_1.PersonComponent,
                 schedule_component_1.ScheduleComponent,
                 profile_component_1.ProfileComponent,
+                search_component_1.SearchComponent,
                 app_component_1.AppComponent
             ],
             bootstrap: [

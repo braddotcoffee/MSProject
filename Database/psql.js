@@ -203,6 +203,15 @@ exports.getProfessor = function(profEmail, callback){
   })
 }
 
+exports.search = function(query, callback){
+  client.query({
+    text: "SELECT * FROM Search($1);",
+    values: [query]
+  }, function(err,result){
+    resolveQuery(err, result, callback);
+  })
+}
+
 exports.login = function(email, password, callback){
   client.query({
     text: "SELECT * FROM GetPassword($1);",

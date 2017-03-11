@@ -12,3 +12,11 @@ CREATE VIEW ProfessorPublic AS (
   LastName, Office, Image
   FROM Professor
 );
+
+CREATE VIEW SearchView AS (
+  SELECT FirstName, LastName, Email
+  FROM Professor
+  UNION
+  SELECT FirstName, LastName, Email
+  FROM Student
+);

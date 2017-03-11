@@ -42,12 +42,12 @@ app {
   display: block;
 }
 
-dashboard , profile{
+dashboard , profile, search{
   display: block;
   width: 70%;
 }
 
-dashboard , person, profile{
+dashboard , person, profile, search{
   display: block;
   margin: 0 auto;
 }
@@ -106,12 +106,22 @@ nav {
   margin: 1% auto;
 }
 
-.login {
+.login, .typeahead{
   display: block;
   margin: 1% auto;
   padding: 0.4%;
   border-style: solid;
   border-radius: 5px;
+}
+
+.twitter-typeahead, .tt-input{
+  width: 100%;
+  font-size: 150%;
+}
+.tt-menu {
+  text-align: left;
+  border: 1px #E8E8E7 solid;
+  width: 100%;
 }
 
 .centered {

@@ -13,6 +13,7 @@ import { DashboardComponent    }  from  '../Components/dashboard.component';
 import { PersonComponent       }  from  '../Components/person.component';
 import { ScheduleComponent     }  from  '../Components/schedule.component';
 import { ProfileComponent      }  from  '../Components/profile.component';
+import { SearchComponent       }  from  '../Components/search.component';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { ProfileComponent      }  from  '../Components/profile.component';
     PersonComponent,
     ScheduleComponent,
     ProfileComponent,
+    SearchComponent,
     AppComponent
   ],
 

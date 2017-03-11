@@ -21,5 +21,6 @@ module.exports = {
   studentOrProf: pg.studentOrProf,
   getStudent: pg.getStudent,
   getProfessor: pg.getProfessor,
+  search: pg.search,
   login: pg.login
 };
