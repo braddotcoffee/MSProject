@@ -135,7 +135,8 @@ RETURNS SETOF SearchView AS $$
 BEGIN
   RETURN QUERY (SELECT * FROM SearchView
     WHERE UPPER(FirstName) LIKE UPPER('%'||Query||'%') OR 
-          UPPER(LastName) LIKE UPPER('%'||Query||'%'));
+          UPPER(LastName) LIKE UPPER('%'||Query||'%') OR 
+          UPPER(Email) LIKE UPPER('%'||Query||'%'));
 END;
 $$ LANGUAGE plpgsql;
 

@@ -57,6 +57,11 @@ div.panel.panel-default {
   color: #333;
 }
 
+.searchEmail {
+  text-align: right;
+  opacity: 0.5;
+}
+
 div.panel-default > .panel-heading {
   background-color: #f8f8f8;
   border-color: #e7e7e7;

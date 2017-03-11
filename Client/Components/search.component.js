@@ -29,7 +29,13 @@ var SearchComponent = (function () {
                 var indexB = valB.indexOf(val);
                 console.log(indexA);
                 console.log(indexB);
-                return indexA > indexB ? 1 : indexB > indexA ? -1 : 0;
+                if (indexA == indexB)
+                    return 0;
+                if (indexA == -1)
+                    return 1;
+                if (indexB == -1)
+                    return -1;
+                return indexA > indexB ? 1 : -1;
             },
             remote: {
                 wildcard: "%QUERY",
@@ -55,7 +61,8 @@ var SearchComponent = (function () {
             limit: 3,
             templates: {
                 suggestion: function (result) {
-                    return '<p>' + result.value + '</p>';
+                    return '<p>' + result.value + '<br><span class="searchEmail">'
+                        + result.email + "</span></p>";
                 }
             }
         });
