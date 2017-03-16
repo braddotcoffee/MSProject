@@ -128,6 +128,24 @@ app.post('/getProfessor', function(req, res, next){
 
   db.getProfessor(profEmail, sendResultRows.bind(null, res));
 });
+// {"cCode": <Code>}
+app.post('/getCourseOH', function(req, res, next){
+  var cCode = req.body.cCode;
+
+  db.getCourseOH(cCode, sendResultRows.bind(null, res));
+})
+// {"cCode": <Code>}
+app.post('/getCourseProf', function(req, res, next){
+  var cCode = req.body.cCode;
+
+  db.getCourseProf(cCode, sendResultRows.bind(null, res));
+})
+// {"cCode": <Code>}
+app.post('/getCourseStaff', function(req, res, next){
+  var cCode = req.body.cCode;
+
+  db.getCourseStaff(cCode, sendResultRows.bind(null, res));
+})
 // {"Email":<Email>}
 app.post('/studentOrProf', function(req,res,next){
   studentOrProf(res, req.body);
@@ -180,6 +198,25 @@ app.post('/storeCourseTimes', function(req,res,next){
   var times = req.body.Times;
 
   db.storeAllCourseTimes(times, sendStatus.bind(null, res));
+})
+// {"Email":<Email>, "cCode": <CourseCode>}
+app.post('/registerStudent', function(req, res, next){
+  var register = req.body;
+
+  db.registerStudent(register, sendStatus.bind(null, res));
+})
+// {"Email":<Email>, "cCode": <CourseCode>}
+app.post('/registerStaff', function(req, res, next){
+  var register = req.body;
+
+  db.registerStaff(register, sendStatus.bind(null, res));
+})
+// {"pEmail":<ProfEmail>, "cCode":<CourseCode>
+//  "Department":<Department>, "Num":<Num>}
+app.post('/storeCourse', function(req, res, next){
+  var course = req.body;
+
+  db.storeCourse(course, sendStatus.bind(null, res));
 })
 
 app.get("*", function(req,res){

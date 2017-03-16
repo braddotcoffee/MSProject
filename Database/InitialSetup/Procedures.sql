@@ -140,3 +140,28 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION GetCourseOH(Code IN CHAR(16))
+RETURNS SETOF OfficeHours AS $$
+BEGIN
+  RETURN QUERY (SELECT * FROM OfficeHours O 
+                WHERE O.cCode = Code);
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION GetCourseProf(cCode IN CHAR(16))
+RETURNS VARCHAR(30) AS $$
+BEGIN 
+  RETURN (SELECT pEmail FROM Courses C
+          WHERE C.Code = cCode);
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION GetCourseStaff(Code IN CHAR(16))
+RETURNS SETOF CourseStaff AS $$
+BEGIN
+  RETURN QUERY (SELECT * FROM CourseStaff C
+                WHERE C.cCode = Code);
+END;
+$$ LANGUAGE plpgsql;
+
+

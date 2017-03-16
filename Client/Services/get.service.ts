@@ -4,7 +4,7 @@ import { Headers, Http  }  from  '@angular/http';
 import { RequestOptions }  from  '@angular/http';
 import { Response       }  from  '@angular/http';
 
-import { Course         }  from  '../Components/Course';
+import { CourseOverview }  from  '../Components/CourseOverview';
 import { CourseTime     }  from  '../Components/CourseTime';
 import { Person         }  from  '../Components/Person';
 
@@ -19,7 +19,10 @@ export class GetService {
   times        = '/courseTimes';
   sInCourse    = '/studentsInCourse';
   student      = '/getStudent';
+  courseOH     = '/getCourseOH';
   professor    = '/getProfessor';
+  cProf        = '/getCourseProf';
+  cStaff       = '/getCourseStaff';
   sOrP         = '/studentOrProf';
 
   constructor(private http: Http, private router: Router) {  }
@@ -50,8 +53,8 @@ export class GetService {
     return body;
   }
 
-  private courseCallback(response: Response): Course[]{
-    let body = response.json() as Course[];
+  private courseCallback(response: Response): CourseOverview[]{
+    let body = response.json() as CourseOverview[];
     return body;
   }
 
@@ -60,11 +63,16 @@ export class GetService {
     return body;
   }
 
+  private peopleCallback(response: Response): Person[] {
+    let body = response.json() as Person[];
+    return body;
+  }
+
   private responseCallback(response: Response): Response {
     return response;
   }
 
-  getCoursesTaken(Email: string): Promise<Course[]>{
+  getCoursesTaken(Email: string): Promise<CourseOverview[]>{
     var json = {"Email": Email};
 
     return this.makePost(this.coursesTaken, json, this.courseCallback);
@@ -82,7 +90,7 @@ export class GetService {
     return this.makePost(this.sOfficeHours, json, this.courseTimeCallback);
   }
 
-  getCurrentlyEnrolled(Email: string): Promise<Course[]>{
+  getCurrentlyEnrolled(Email: string): Promise<CourseOverview[]>{
     var json = {"Email": Email};
 
     return this.makePost(this.enrolled, json, this.courseCallback);
@@ -94,10 +102,28 @@ export class GetService {
     return this.makePost(this.times, json, this.courseTimeCallback);
   }
 
-  getStudentsInCourse(Name: string): Promise<string>{
+  getCourseOH(cCode: string): Promise<CourseTime[]>{
+    var json = {"cCode": cCode};
+
+    return this.makePost(this.courseOH, json, this.courseTimeCallback);
+  }
+
+  getCourseProf(cCode: string): Promise<Person>{
+    var json = {"cCode": cCode};
+
+    return this.makePost(this.cProf, json, this.personCallback);
+  }
+
+  getCourseStaff(cCode: string): Promise<Response>{
+    var json = {"cCode": cCode};
+
+    return this.makePost(this.cStaff, json, this.peopleCallback);
+  }
+
+  getStudentsInCourse(Name: string): Promise<Response>{
     var json = {"Name":Name};
 
-    return this.makePost(this.student, json, this.logCallback);
+    return this.makePost(this.student, json, this.responseCallback);
   }
 
   getStudent(Email: string): Promise<Response>{

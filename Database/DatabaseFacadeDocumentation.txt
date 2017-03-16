@@ -151,3 +151,34 @@ storeAllCourseTimes(times, callback)
 
   callback -> Optional callback with the database response
   and error after all times are stored
+
+storeCourse(course, callback)
+  Stores a course into the database, generating
+  a unique ID to be used for enrollment
+
+  Current Structure:
+    course.pEmail, course.Name,
+    course.Department, course.Num
+
+  callback -> Optional callback with the database response
+  and error after all times are stored
+
+registerStudent(regsiter, callback)
+  Signs student up for course stored in system
+
+  Current Structure:
+    register.Email, register.cCode
+
+  callback -> Optional callback with the database response
+  and error after all times are stored
+
+registerStaff(register, callback)
+  Signs up SA/TA to be listed as Course Staff
+  for given course
+
+  Current Structure:
+    register.Email, register.cCode
+
+  callback -> Optional callback with the database response
+  and error after all times are stored
+

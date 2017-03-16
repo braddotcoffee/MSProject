@@ -167,3 +167,26 @@ db.login('testProf@wpi.edu', 'What a password this is');
 
 db.studentOrProf('bwbonanno@wpi.edu');
 db.getStudentRank('bwbonanno@wpi.edu');
+
+course = {
+  "pEmail": "testprof@email.com",
+  "Name": "Webware",
+  "Department": "CS",
+  "Num": "4241"
+};
+
+db.storeCourse(course);
+
+register = {
+  "Email": "testrank0@email.com",
+  "cCode": "Kj]KPPQ_ZTnkRKsS" 
+}
+
+db.registerStudent(register);
+
+register = {
+  "Email": "test2@email.com",
+  "cCode": "Kj]KPPQ_ZTnkRKsS" 
+}
+
+db.registerStaff(register);

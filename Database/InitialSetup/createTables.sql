@@ -26,6 +26,7 @@ CREATE TABLE Student (
   StudentRank INT NOT NULL,
   Password CHAR(60) NOT NULL,
   Image VARCHAR(60),
+  SessionID CHAR(60),
   CONSTRAINT checkStudentRank check 
   (StudentRank IN (0,1,2))
 );
@@ -36,7 +37,8 @@ CREATE TABLE Professor (
   LastName VARCHAR(30) NOT NULL,
   Office VARCHAR(10) NOT NULL,
   Password CHAR(60) NOT NULL,
-  Image VARCHAR(60)
+  Image VARCHAR(60),
+  SessionID CHAR(60)
 );
 
 CREATE TABLE SecurityQuestion (
@@ -51,6 +53,8 @@ CREATE TABLE OfficeHours (
   Email VARCHAR(30),
   Room CHAR(10) NOT NULL,
   Course VARCHAR(50) NOT NULL,
+  cCode CHAR(16) 
+  REFERENCES Courses(Code),
   PRIMARY KEY (Day, Time, Email)
 );
 
@@ -80,9 +84,28 @@ CREATE TABLE CourseTimes (
 );
 
 CREATE TABLE Courses (
+  Code CHAR(16) PRIMARY KEY,
+  pEmail VARCHAR(30),
   Name VARCHAR(50),
   Department VARCHAR(4),
   Num VARCHAR(5)
+);
+
+CREATE TABLE SignedUp (
+  sEmail VARCHAR(30)
+  REFERENCES Student(Email),
+  cCode CHAR(16)
+  REFERENCES Course(Code),
+  PRIMARY KEY (cCode, sEmail)
+);
+
+CREATE TABLE CourseStaff (
+  sEmail VARCHAR(30) 
+  REFERENCES Student(Email),
+  cCode CHAR(16)
+  REFERENCES Course(Code),
+  sRank INT NOT NULL,
+  PRIMARY KEY (sEmail, cCode)
 );
 
 CREATE VIEW StudentPublic AS(

@@ -203,6 +203,33 @@ exports.getProfessor = function(profEmail, callback){
   })
 }
 
+exports.getCourseOH = function(cCode, callback){
+  client.query({
+    text: 'SELECT * FROM GetCourseOH($1);',
+    values: [cCode]
+  }, function(err,result){
+    resolveQuery(err,result, callback);
+  })
+}
+
+exports.getCourseProf = function(cCode, callback){
+  client.query({
+    text: 'SELECT * FROM GetCourseProf($1);',
+    values: [cCode]
+  }, function(err, result){
+    resolveQuery(err, result, callback);
+  })
+}
+
+exports.getCourseStaff = function(cCode, callback){
+  client.query({
+    text: 'SELECT * FROM GetCourseStaff($1);',
+    values: [cCode]
+  }, function(err, result){
+    resolveQuery(err, result, callback);
+  })
+}
+
 exports.search = function(query, callback){
   client.query({
     text: "SELECT * FROM Search($1);",
@@ -339,3 +366,56 @@ storeCourseTime = function(time, last, callback){
 exports.storeAllCourseTimes = function(times, callback){
   storeAll(times, storeCourseTime, callback);
 }
+
+function generateID(length, callback){
+  var userID = "";
+  for (var i = 0; i < 16; i++) {
+    var number = Math.random();
+    number *= 42;
+    number += 74;
+    number = Math.floor(number);
+    userID += String.fromCharCode(number);
+  }
+
+  if(callback)
+    callback(userID);
+  else
+    return userID
+}
+
+storeCourseData = function(course, callback, id){
+  insertIntoDB("Courses",
+    [
+      id,
+      course.pEmail,
+      course.Name,
+      course.Department,
+      course.Num
+    ], true, callback);
+}
+
+exports.storeCourse = function(course, callback){
+  generateID(16, storeCourseData.bind(null, course, callback));
+}
+
+exports.registerStudent = function(register, callback){
+  insertIntoDB("SignedUp",
+    [
+      register.Email,
+      register.cCode
+    ], true, callback);
+}
+
+exports.registerStaff = function(register, callback){
+  exports.getStudentRank(register.Email, function(err, result){
+    insertIntoDB("CourseStaff",
+      [
+        register.Email,
+        register.cCode,
+        result.rows[0].srank
+      ], true, callback);
+
+  })
+}
+
+

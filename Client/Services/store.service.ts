@@ -1,6 +1,7 @@
 import { Injectable     }  from  '@angular/core';
 import { Headers, Http  }  from  '@angular/http';
 import { RequestOptions }  from  '@angular/http';
+import { Response       }  from  '@angular/http';
 
 
 import  'rxjs/add/operator/toPromise';
@@ -12,7 +13,10 @@ export class StoreService {
   storeOH      = '/storeOfficeHours';
   storeCTaken  = '/storeCoursesTaken';
   storeE       = '/storeEnrolled';
-  storeCTimes  = '/storeCourseTimes'
+  storeCTimes  = '/storeCourseTimes';
+  storeCourse  = '/storeCourse';
+  rStudent     = '/registerStudent';
+  rStaff       = '/registerStaff';
 
   buttonClass: string;
 
@@ -35,37 +39,49 @@ export class StoreService {
     return Promise.reject(error.message || error);
   }
 
-  private logCallback(response: Object): void{
+  private logCallback(response: Response): void{
     console.log("Inside Callback")
-    console.log(response)
+    console.log(response.json())
   }
 
-  storeStudent(json: Object): Promise<Object>{
+  storeStudent(json: Object): Promise<Response>{
     return this.makePost(this.storeStud, json, this.logCallback);
   }
 
-  storeProfessor(json: Object): Promise<Object>{
+  storeProfessor(json: Object): Promise<Response>{
     return this.makePost(this.storeProf, json, this.logCallback);
   }
 
-  storeSecurityQuestion(json: Object): Promise<Object>{
+  storeSecurityQuestion(json: Object): Promise<Response>{
     return this.makePost(this.storeSec, json, this.logCallback);
   }
 
-  storeOfficeHours(json: Object): Promise<Object>{
+  storeOfficeHours(json: Object): Promise<Response>{
     return this.makePost(this.storeOH, json, this.logCallback);
   }
 
-  storeCoursesTaken(json: Object): Promise<Object>{
+  storeCoursesTaken(json: Object): Promise<Response>{
     return this.makePost(this.storeCTaken, json, this.logCallback);
   }
 
-  storeEnrolled(json: Object): Promise<Object>{
+  storeEnrolled(json: Object): Promise<Response>{
     return this.makePost(this.storeE, json, this.logCallback);
   }
 
-  storeCourseTimes(json: Object): Promise<Object>{
+  storeCourseTimes(json: Object): Promise<Response>{
     return this.makePost(this.storeCTimes, json, this.logCallback);
+  }
+
+  storeCourse(json: Object): Promise<Response>{
+    return this.makePost(this.storeCourse, json, this.logCallback);
+  }
+
+  registerStudent(json: Object): Promise<Response>{
+    return this.makePost(this.rStudent, json, this.logCallback);
+  }
+
+  registerStaff(json: Object): Promise<Response>{
+    return this.makePost(this.rStaff, json, this.logCallback);
   }
 
 }

@@ -5,6 +5,7 @@ import { HomeComponent        }  from  '../Components/home.component';
 import { LoginComponent       }  from  '../Components/login.component';
 import { DashboardComponent   }  from  '../Components/dashboard.component';
 import { ProfileComponent     }  from  '../Components/profile.component';
+import { CourseComponent      }  from  '../Components/course.component';
 
 const routes = [
   {
@@ -25,6 +26,11 @@ const routes = [
   {
     path: 'profile/:email',
     component: ProfileComponent
+  },
+
+  {
+    path: 'course/:cCode',
+    component: CourseComponent
   },
 
   {

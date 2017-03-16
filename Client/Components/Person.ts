@@ -1,7 +1,7 @@
-import { Course     } from './Course';
-import { CourseTime } from './CourseTime';
+import { CourseOverview }  from  './CourseOverview.ts';
+import { CourseTime     }  from  './CourseTime';
 
-import { GetService } from '../Services/get.service';
+import { GetService     }  from  '../Services/get.service';
 
 
 export class Person {
@@ -16,8 +16,8 @@ export class Person {
   image: string;
   ct: CourseTime[];
   oh: CourseTime[];
-  cTaken: Course[];
-  enrolled: Course[];
+  cTaken: CourseOverview[];
+  enrolled: CourseOverview[];
 
   constructor(private getService: GetService, email: string, rank: number){
     this.email = email;
