@@ -114,7 +114,7 @@ export class GetService {
     return this.makePost(this.cProf, json, this.personCallback);
   }
 
-  getCourseStaff(cCode: string): Promise<Response>{
+  getCourseStaff(cCode: string): Promise<Person[]>{
     var json = {"cCode": cCode};
 
     return this.makePost(this.cStaff, json, this.peopleCallback);

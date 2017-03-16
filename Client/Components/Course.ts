@@ -19,6 +19,17 @@ export class Course {
   initCourse(): void {
     this.getService.getCourseOfficeHours(this.cCode)
       .then(response => this.oh = response);
+    this.getService.getCourseProf(this.cCode)
+      .then(response => this.prof = response);
+    this.getService.getProfessor(this.prof.email)
+      .then(response => this.prof = response);
+    this.getService.getCourseStaff(this.cCode)
+    .then(response => {
+      response.forEach(person){
+        this.getService.getStudent(person.email)
+          .then(response => this.staff.push(response));
+      }
+    });
   }
 
   initStudent(): void {
