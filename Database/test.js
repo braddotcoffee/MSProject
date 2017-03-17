@@ -190,3 +190,27 @@ register = {
 }
 
 db.registerStaff(register);
+
+s1 = {
+  "Email" : "test2@email.com",
+  "Skill" : "C",
+  "Comfort" : 8
+}
+s2 = {
+  "Email" : "test2@email.com",
+  "Skill" : "NodeJS",
+  "Comfort" : 8
+}
+s3 = {
+  "Email" : "test2@email.com",
+  "Skill" : "C++",
+  "Comfort" : 5
+}
+s4 = {
+  "Email" : "test2@email.com",
+  "Skill" : "Java",
+  "Comfort" : 9
+}
+
+skills = [s1,s2,s3,s4];
+db.storeAllSkills(skills);

@@ -230,6 +230,33 @@ exports.getCourseStaff = function(cCode, callback){
   })
 }
 
+exports.getCourseName = function(cCode, callback){
+  client.query({
+    text: 'SELECT * FROM GetCourseName($1) AS Name;',
+    values: [cCode]
+  }, function(err, result){
+    resolveQuery(err, result, callback);
+  })
+}
+
+exports.getSkills = function(Email, callback){
+  client.query({
+    text: "SELECT * FROM GetSkills($1);",
+    values: [Email]
+  }, function(err,result){
+    resolveQuery(err, result, callback)
+  })
+}
+
+exports.getSignedUp = function(cCode, callback){
+  client.query({
+    text: "SELECT * FROM GetSignedUp($1);",
+    values: [cCode]
+  }, function(err,result){
+    resolveQuery(err,result,callback);
+  })
+}
+
 exports.search = function(query, callback){
   client.query({
     text: "SELECT * FROM Search($1);",
@@ -365,6 +392,19 @@ storeCourseTime = function(time, last, callback){
 
 exports.storeAllCourseTimes = function(times, callback){
   storeAll(times, storeCourseTime, callback);
+}
+
+storeSkill = function(skill, last, callback){
+  insertIntoDB("Skills",
+    [
+      skill.Email,
+      skill.Skill,
+      skill.Comfort
+    ], last, callback);
+}
+
+exports.storeAllSkills = function(skills, callback){
+  storeAll(skills, storeSkill, callback);
 }
 
 function generateID(length, callback){

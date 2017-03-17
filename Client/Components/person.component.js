@@ -16,7 +16,6 @@ var PersonComponent = (function () {
         this.getService = getService;
     }
     PersonComponent.prototype.ngOnInit = function () {
-        console.log(this.rank);
         this.person = new Person_1.Person(this.getService, this.email, this.rank);
     };
     PersonComponent.prototype.ngOnChanges = function () {

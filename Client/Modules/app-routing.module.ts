@@ -6,6 +6,7 @@ import { LoginComponent       }  from  '../Components/login.component';
 import { DashboardComponent   }  from  '../Components/dashboard.component';
 import { ProfileComponent     }  from  '../Components/profile.component';
 import { CourseComponent      }  from  '../Components/course.component';
+import { RosterComponent      }  from  '../Components/roster.component';
 
 const routes = [
   {
@@ -31,6 +32,11 @@ const routes = [
   {
     path: 'course/:cCode',
     component: CourseComponent
+  },
+
+  {
+    path: 'roster/:cCode',
+    component: RosterComponent
   },
 
   {

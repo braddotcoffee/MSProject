@@ -14,6 +14,8 @@ var home_component_1 = require('../Components/home.component');
 var login_component_1 = require('../Components/login.component');
 var dashboard_component_1 = require('../Components/dashboard.component');
 var profile_component_1 = require('../Components/profile.component');
+var course_component_1 = require('../Components/course.component');
+var roster_component_1 = require('../Components/roster.component');
 var routes = [
     {
         path: 'home',
@@ -30,6 +32,14 @@ var routes = [
     {
         path: 'profile/:email',
         component: profile_component_1.ProfileComponent
+    },
+    {
+        path: 'course/:cCode',
+        component: course_component_1.CourseComponent
+    },
+    {
+        path: 'roster/:cCode',
+        component: roster_component_1.RosterComponent
     },
     {
         path: '',

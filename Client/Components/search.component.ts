@@ -78,7 +78,10 @@ export class SearchComponent implements OnInit {
 
   submit(): void {
     var val = $("#search").val();
+    $("#search").val("");
     if(val.indexOf('@') !== -1 && val.indexOf('.') !== -1)
       this.router.navigateByUrl('/profile/'+val);
+    if(val.indexOf('CC:') !== -1)
+      this.router.navigateByUrl('/course/'+val.substr(3))
   }
 }

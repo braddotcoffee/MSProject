@@ -14,7 +14,8 @@ export class StoreService {
   storeCTaken  = '/storeCoursesTaken';
   storeE       = '/storeEnrolled';
   storeCTimes  = '/storeCourseTimes';
-  storeCourse  = '/storeCourse';
+  storeC       = '/storeCourse';
+  storeS       = '/storeSkills';
   rStudent     = '/registerStudent';
   rStaff       = '/registerStaff';
 
@@ -73,7 +74,11 @@ export class StoreService {
   }
 
   storeCourse(json: Object): Promise<Response>{
-    return this.makePost(this.storeCourse, json, this.logCallback);
+    return this.makePost(this.storeC, json, this.logCallback);
+  }
+
+  storeSkills(json: Object): Promise<Response>{
+    return this.makePost(this.storeS, json, this.logCallback);
   }
 
   registerStudent(json: Object): Promise<Response>{

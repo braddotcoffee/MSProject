@@ -4,7 +4,6 @@ var Person = (function () {
         this.getService = getService;
         this.email = email;
         this.viewerRank = rank;
-        console.log("Init Person");
         this.initPerson();
     }
     Person.prototype.initPerson = function () {
@@ -23,6 +22,7 @@ var Person = (function () {
     Person.prototype.initStudent = function () {
         this.getStudent();
         this.getCoursesTaken();
+        this.getSkills();
         if (this.viewerRank > 0) {
             this.getEnrolled();
             this.getCourseTimes();
@@ -72,6 +72,14 @@ var Person = (function () {
         var _this = this;
         this.getService.getCoursesTaken(this.email)
             .then(function (c) { return _this.cTaken = c; });
+    };
+    Person.prototype.getSkills = function () {
+        var _this = this;
+        this.getService.getSkills(this.email)
+            .then(function (s) {
+            _this.skills = s;
+            console.log(_this.skills);
+        });
     };
     Person.prototype.getOfficeHours = function () {
         var _this = this;

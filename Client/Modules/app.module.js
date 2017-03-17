@@ -21,6 +21,9 @@ var person_component_1 = require('../Components/person.component');
 var schedule_component_1 = require('../Components/schedule.component');
 var profile_component_1 = require('../Components/profile.component');
 var search_component_1 = require('../Components/search.component');
+var course_component_1 = require('../Components/course.component');
+var roster_component_1 = require('../Components/roster.component');
+var personList_component_1 = require('../Components/personList.component');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -40,6 +43,9 @@ var AppModule = (function () {
                 schedule_component_1.ScheduleComponent,
                 profile_component_1.ProfileComponent,
                 search_component_1.SearchComponent,
+                course_component_1.CourseComponent,
+                roster_component_1.RosterComponent,
+                personList_component_1.PersonListComponent,
                 app_component_1.AppComponent
             ],
             bootstrap: [

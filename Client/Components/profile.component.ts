@@ -30,8 +30,6 @@ export class ProfileComponent implements OnInit {
                .subscribe(response => {
                  let body = response.json();
                  var loggedIn = sessionStorage.getItem("loggedIn");
-                 console.log("HERE");
-                 console.log(body);
                  if(!body.Email || !loggedIn)
                    this.router.navigateByUrl("/dashboard")
                  else{

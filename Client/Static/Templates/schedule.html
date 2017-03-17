@@ -2,7 +2,10 @@
   <div class="day" *ngIf="this.schedule.get(d)">
     {{d}} 
     <div class="time" *ngFor="let t of this.schedule.get(d)">
-      {{t.name}} {{t.time}}
+      {{t.name}} {{t.time}} 
+      <span class="staffLinks" *ngIf="t.email">
+        {{t.email}} | {{t.room}}
+      </span>
     </div>
   </div>
 </div>

@@ -38,6 +38,11 @@ a {
   text-shadow: none;
 }
 
+.staffLinks {
+  float: right;
+  padding-right: 5%;
+}
+
 app {
   display: block;
 }
@@ -117,6 +122,7 @@ nav {
   padding: 0.4%;
   border-style: solid;
   border-radius: 5px;
+  border-width: 1px;
 }
 
 .twitter-typeahead, .tt-input{

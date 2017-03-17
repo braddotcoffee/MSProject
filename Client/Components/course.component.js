@@ -11,47 +11,41 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var router_2 = require('@angular/router');
+var Course_1 = require('./Course');
 var get_service_1 = require('../Services/get.service');
 require('rxjs/add/operator/switchMap');
-var ProfileComponent = (function () {
-    function ProfileComponent(getService, route, router) {
+var CourseComponent = (function () {
+    function CourseComponent(getService, route, router) {
         this.getService = getService;
         this.route = route;
         this.router = router;
     }
-    ProfileComponent.prototype.ngOnInit = function () {
+    CourseComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.params
-            .switchMap(function (params) { return _this.getService
-            .getStudentOrProf(params["email"]); })
+            .switchMap(function (params) {
+            _this.cCode = params["cCode"];
+            return _this.getService.getCourseName(params["cCode"]);
+        })
             .subscribe(function (response) {
-            var body = response.json();
+            var body = response.json()[0];
             var loggedIn = sessionStorage.getItem("loggedIn");
-            if (!body.Email || !loggedIn)
+            if (!body.name || !loggedIn)
                 _this.router.navigateByUrl("/dashboard");
             else {
-                _this.email = body.Email;
-                var userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
-                console.log(userInfo);
-                if (userInfo.studentOrProf == "Professor")
-                    _this.rank = 3;
-                else if (userInfo.Email == _this.email)
-                    _this.rank = 4;
-                else
-                    _this.rank = userInfo.studentRank;
-                console.log(_this.rank);
+                _this.course = new Course_1.Course(_this.getService, _this.cCode, body.name);
             }
         });
     };
-    ProfileComponent = __decorate([
+    CourseComponent = __decorate([
         core_1.Component({
             selector: 'profile',
             providers: [get_service_1.GetService],
-            templateUrl: 'Templates/profile.html'
+            templateUrl: 'Templates/course.html'
         }), 
         __metadata('design:paramtypes', [get_service_1.GetService, router_1.ActivatedRoute, router_2.Router])
-    ], ProfileComponent);
-    return ProfileComponent;
+    ], CourseComponent);
+    return CourseComponent;
 }());
-exports.ProfileComponent = ProfileComponent;
-//# sourceMappingURL=profile.component.js.map
+exports.CourseComponent = CourseComponent;
+//# sourceMappingURL=course.component.js.map

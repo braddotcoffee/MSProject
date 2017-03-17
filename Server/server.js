@@ -110,6 +110,12 @@ app.post('/courseTimes', function(req,res,next){
 
   db.getCourseTimes(studentEmail, sendResultRows.bind(null, res));
 });
+// {"Email":<Email>}
+app.post('/skills', function(req,res,next){
+  var studentEmail = req.body.Email;
+
+  db.getSkills(studentEmail, sendResultRows.bind(null, res));
+});
 // {"Name":<Name>}
 app.post('/studentsInCourse', function(req,res,next){
   var courseName = req.body.Name;
@@ -145,6 +151,18 @@ app.post('/getCourseStaff', function(req, res, next){
   var cCode = req.body.cCode;
 
   db.getCourseStaff(cCode, sendResultRows.bind(null, res));
+})
+// {"cCode": <Code>}
+app.post('/getCourseName', function(req, res, next){
+  var cCode = req.body.cCode;
+
+  db.getCourseName(cCode, sendResultRows.bind(null, res));
+})
+// {"cCode": <Code>}
+app.post('/getSignedUp', function(req, res, next){
+  var cCode = req.body.cCode;
+
+  db.getSignedUp(cCode, sendResultRows.bind(null, res));
 })
 // {"Email":<Email>}
 app.post('/studentOrProf', function(req,res,next){
@@ -198,6 +216,12 @@ app.post('/storeCourseTimes', function(req,res,next){
   var times = req.body.Times;
 
   db.storeAllCourseTimes(times, sendStatus.bind(null, res));
+})
+// {"Skills":[<CourseTime JSONs>]}
+app.post('/storeSkills', function(req,res,next){
+  var skills = req.body.Skills;
+
+  db.storeAllSkills(skills, sendStatus.bind(null, res));
 })
 // {"Email":<Email>, "cCode": <CourseCode>}
 app.post('/registerStudent', function(req, res, next){

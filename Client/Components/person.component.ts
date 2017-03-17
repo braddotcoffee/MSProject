@@ -20,7 +20,6 @@ export class PersonComponent implements OnInit {
   constructor(private getService: GetService){}
 
   ngOnInit(): void {
-    console.log(this.rank);
     this.person = new Person(this.getService, this.email, this.rank);
   }
 

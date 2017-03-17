@@ -1,0 +1,43 @@
+<div class="centered">
+  <search></search>
+  <div *ngIf='this.course'>
+    <div class="name">
+      {{this.course.name}}
+    </div>
+    <div *ngIf='this.course.prof'>
+      <div class="name">
+        {{this.course.prof.firstName}} {{this.course.prof.lastName}}
+      </div>
+      <div class="email">
+        <a href="/profile/{{this.course.prof.email}}" 
+          routerLink="/profile/{{this.course.prof.email}}">
+          Profile
+        </a> | 
+        <a href="mailto:{{this.course.prof.email}}?Subject=Hey%20there"
+          target="_top">
+          Email
+        </a>
+      </div>
+    </div>
+
+    <div *ngIf="this.course.staff">
+      <person-list [header]="'Staff'" [people]="this.course.staff">
+      </person-list>
+    </div>
+
+      <div class="panel panel-default" *ngIf="this.course.oh">
+        <div class="panel-heading">
+          <h5 class="panel-title">
+            <a data-toggle="collapse" href="#officeHours">
+              Office Hours 
+            </a>
+          </h5>
+        </div>
+        <div id="officeHours" class="panel-collapse collapse in">
+          <div class="panel-body">
+            <schedule [times]="this.course.oh"></schedule>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

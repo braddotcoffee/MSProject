@@ -9,6 +9,7 @@ module.exports = {
   storeCoursesTaken : pg.storeCoursesTaken,
   storeAllEnrolled : pg.storeAllEnrolled,
   storeAllCourseTimes : pg.storeAllCourseTimes,
+  storeAllSkills : pg.storeAllSkills,
   storeCourse: pg.storeCourse,
   registerStudent: pg.registerStudent,
   registerStaff: pg.registerStaff,
@@ -27,6 +28,9 @@ module.exports = {
   getCourseOH: pg.getCourseOH,
   getCourseProf: pg.getCourseProf,
   getCourseStaff: pg.getCourseStaff,
+  getCourseName: pg.getCourseName,
+  getSkills : pg.getSkills,
+  getSignedUp: pg.getSignedUp,
   search: pg.search,
   login: pg.login
 };

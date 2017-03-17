@@ -178,3 +178,7 @@ testPost('/loginCred', JSON.stringify(json), testLogin);
 json = {"Email":"testProf@wpi.edu", 
   "Password":"What a password this is"}
 testPost('/loginCred', JSON.stringify(json), testLogin);
+json = {
+  "cCode":"hSpghRfMhU[SVsl^"
+}
+testPost('/getCourseName', JSON.stringify(json), testQueries);

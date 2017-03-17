@@ -12,6 +12,10 @@ var StoreService = (function () {
         this.storeCTaken = '/storeCoursesTaken';
         this.storeE = '/storeEnrolled';
         this.storeCTimes = '/storeCourseTimes';
+        this.storeC = '/storeCourse';
+        this.storeS = '/storeSkills';
+        this.rStudent = '/registerStudent';
+        this.rStaff = '/registerStaff';
     }
     StoreService.prototype.makePost = function (url, json, callback) {
         var headers = new http_1.Headers({ "Content-Type": "application/json" });
@@ -28,7 +32,7 @@ var StoreService = (function () {
     };
     StoreService.prototype.logCallback = function (response) {
         console.log("Inside Callback");
-        console.log(response);
+        console.log(response.json());
     };
     StoreService.prototype.storeStudent = function (json) {
         return this.makePost(this.storeStud, json, this.logCallback);
@@ -50,6 +54,18 @@ var StoreService = (function () {
     };
     StoreService.prototype.storeCourseTimes = function (json) {
         return this.makePost(this.storeCTimes, json, this.logCallback);
+    };
+    StoreService.prototype.storeCourse = function (json) {
+        return this.makePost(this.storeC, json, this.logCallback);
+    };
+    StoreService.prototype.storeSkills = function (json) {
+        return this.makePost(this.storeS, json, this.logCallback);
+    };
+    StoreService.prototype.registerStudent = function (json) {
+        return this.makePost(this.rStudent, json, this.logCallback);
+    };
+    StoreService.prototype.registerStaff = function (json) {
+        return this.makePost(this.rStaff, json, this.logCallback);
     };
     return StoreService;
 }());

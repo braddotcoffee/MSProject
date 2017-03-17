@@ -15,6 +15,8 @@ import { ScheduleComponent     }  from  '../Components/schedule.component';
 import { ProfileComponent      }  from  '../Components/profile.component';
 import { SearchComponent       }  from  '../Components/search.component';
 import { CourseComponent       }  from  '../Components/course.component';
+import { RosterComponent       }  from  '../Components/roster.component';
+import { PersonListComponent   }  from  '../Components/personList.component';
 
 @NgModule({
   imports: [
@@ -33,6 +35,8 @@ import { CourseComponent       }  from  '../Components/course.component';
     ProfileComponent,
     SearchComponent,
     CourseComponent,
+    RosterComponent,
+    PersonListComponent, 
     AppComponent
   ],
 

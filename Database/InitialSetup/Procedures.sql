@@ -164,4 +164,26 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION GetCourseName(cCode IN CHAR(16))
+RETURNS VARCHAR(50) AS $$
+BEGIN
+  RETURN (SELECT Name FROM Courses C
+          WHERE C.Code = cCode);
+END;
+$$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION GetSkills(sEmail IN VARCHAR(30))
+RETURNS SETOF Skills AS $$
+BEGIN
+  RETURN QUERY (SELECT * FROM Skills S 
+                WHERE S.Email = sEmail);
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION GetSignedUp(Code IN CHAR(16))
+RETURNS SETOF SignedUp AS $$
+BEGIN
+  RETURN QUERY (SELECT * FROM SignedUp S
+                WHERE S.cCode = Code);
+END;
+$$ LANGUAGE plpgsql;

@@ -1,5 +1,6 @@
-import { CourseOverview }  from  './CourseOverview.ts';
+import { CourseOverview }  from  './CourseOverview';
 import { CourseTime     }  from  './CourseTime';
+import { Skill          }  from  './Skill'
 
 import { GetService     }  from  '../Services/get.service';
 
@@ -18,11 +19,11 @@ export class Person {
   oh: CourseTime[];
   cTaken: CourseOverview[];
   enrolled: CourseOverview[];
+  skills: Skill[];
 
   constructor(private getService: GetService, email: string, rank: number){
     this.email = email;
     this.viewerRank = rank;
-    console.log("Init Person");
     this.initPerson();
   }
 
@@ -43,6 +44,7 @@ export class Person {
   initStudent(): void {
     this.getStudent();
     this.getCoursesTaken();
+    this.getSkills();
 
     if(this.viewerRank > 0){
       this.getEnrolled();
@@ -95,6 +97,14 @@ export class Person {
   getCoursesTaken(): void{
     this.getService.getCoursesTaken(this.email)
       .then(c => this.cTaken = c);
+  }
+
+  getSkills(): void {
+    this.getService.getSkills(this.email)
+      .then(s => {
+        this.skills = s
+        console.log(this.skills);
+      });
   }
 
   getOfficeHours(): void{

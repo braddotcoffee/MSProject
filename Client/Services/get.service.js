@@ -18,13 +18,18 @@ var GetService = (function () {
         this.http = http;
         this.router = router;
         this.coursesTaken = '/coursesTaken';
-        this.cOfficeHours = '/courseOfficeHours';
         this.sOfficeHours = '/staffOfficeHours';
         this.enrolled = '/currentlyEnrolled';
         this.times = '/courseTimes';
         this.sInCourse = '/studentsInCourse';
+        this.skills = '/skills';
         this.student = '/getStudent';
+        this.courseOH = '/getCourseOH';
         this.professor = '/getProfessor';
+        this.cProf = '/getCourseProf';
+        this.cStaff = '/getCourseStaff';
+        this.cName = '/getCourseName';
+        this.sUp = '/getSignedUp';
         this.sOrP = '/studentOrProf';
     }
     GetService.prototype.makePost = function (url, json, callback) {
@@ -56,16 +61,16 @@ var GetService = (function () {
         var body = response.json();
         return body;
     };
+    GetService.prototype.skillsCallback = function (response) {
+        var body = response.json();
+        return body;
+    };
     GetService.prototype.responseCallback = function (response) {
         return response;
     };
     GetService.prototype.getCoursesTaken = function (Email) {
         var json = { "Email": Email };
         return this.makePost(this.coursesTaken, json, this.courseCallback);
-    };
-    GetService.prototype.getCourseOfficeHours = function (Name) {
-        var json = { "Name": Name };
-        return this.makePost(this.cOfficeHours, json, this.logCallback);
     };
     GetService.prototype.getStaffOfficeHours = function (Email) {
         var json = { "Email": Email };
@@ -79,9 +84,33 @@ var GetService = (function () {
         var json = { "Email": Email };
         return this.makePost(this.times, json, this.courseTimeCallback);
     };
+    GetService.prototype.getSkills = function (Email) {
+        var json = { "Email": Email };
+        return this.makePost(this.skills, json, this.skillsCallback);
+    };
+    GetService.prototype.getCourseOH = function (cCode) {
+        var json = { "cCode": cCode };
+        return this.makePost(this.courseOH, json, this.courseTimeCallback);
+    };
+    GetService.prototype.getCourseProf = function (cCode) {
+        var json = { "cCode": cCode };
+        return this.makePost(this.cProf, json, this.responseCallback);
+    };
+    GetService.prototype.getCourseStaff = function (cCode) {
+        var json = { "cCode": cCode };
+        return this.makePost(this.cStaff, json, this.responseCallback);
+    };
+    GetService.prototype.getCourseName = function (cCode) {
+        var json = { "cCode": cCode };
+        return this.makePost(this.cName, json, this.responseCallback);
+    };
+    GetService.prototype.getSignedUp = function (cCode) {
+        var json = { "cCode": cCode };
+        return this.makePost(this.sUp, json, this.responseCallback);
+    };
     GetService.prototype.getStudentsInCourse = function (Name) {
         var json = { "Name": Name };
-        return this.makePost(this.student, json, this.logCallback);
+        return this.makePost(this.student, json, this.responseCallback);
     };
     GetService.prototype.getStudent = function (Email) {
         var json = { "Email": Email };

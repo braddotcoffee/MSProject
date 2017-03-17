@@ -27,3 +27,13 @@ CREATE TABLE CourseStaff (
   (sRank IN (1,2))
 );
 
+CREATE TABLE Skills (
+  Email VARCHAR(30)
+  REFERENCES Student(Email),
+  Skill VARCHAR(50),
+  Comfort INT NOT NULL,
+  PRIMARY KEY (Email, Skill),
+  CONSTRAINT checkComfort CHECK
+  (Comfort >= 1 AND Comfort <= 10)
+);
+

@@ -1,0 +1,8 @@
+<div class="centered">
+  <div class="name">
+    {{name}}
+  </div>
+  <div *ngIf="people">
+    <person-list [header]="'Roster'" [people]="people"></person-list>
+  </div>
+</div>
